@@ -1,14 +1,17 @@
 "use client";
 
-import { motion } from "framer-motion";
+import { motion, AnimatePresence } from "framer-motion";
 import { useState, useRef, FormEvent, ChangeEvent } from "react";
-import { PaperAirplaneIcon, CheckCircleIcon } from "@heroicons/react/24/outline";
-import { AnimatePresence } from "framer-motion";
+import { CheckCircleIcon } from "@heroicons/react/24/outline";
 
 export default function ContactForm() {
   const [submitted, setSubmitted] = useState(false);
   const [loading, setLoading] = useState(false);
-  const [flying, setFlying] = useState(false);
+  const [planeState, setPlaneState] = useState<"idle" | "folding" | "flying">("idle");
+
+  // clip-path shapes
+  const arrowClip = "polygon(0% 20%, 50% 20%, 50% 0%, 100% 50%, 50% 100%, 50% 80%, 0% 80%)";
+  const planeClip = "polygon(0% 30%, 100% 50%, 0% 70%, 15% 50%)";
   const [error, setError] = useState("");
   const [phone, setPhone] = useState("");
   const formLoadedAt = useRef(Date.now());
@@ -45,10 +48,14 @@ export default function ContactForm() {
       return;
     }
 
-    // Trigger fly-off animation, then start loading
-    setFlying(true);
-    await new Promise((r) => setTimeout(r, 600));
-    setFlying(false);
+    // Trigger fold → fly animation, then start loading
+    // Step 1: Arrow folds into paper airplane shape
+    setPlaneState("folding");
+    await new Promise((r) => setTimeout(r, 1400));
+    // Step 2: Paper airplane glides off the button
+    setPlaneState("flying");
+    await new Promise((r) => setTimeout(r, 2200));
+    setPlaneState("idle");
     setLoading(true);
     // Simulate submission — replace with actual API endpoint
     await new Promise((r) => setTimeout(r, 1000));
@@ -220,7 +227,7 @@ export default function ContactForm() {
 
       <button
         type="submit"
-        disabled={loading || flying}
+        disabled={loading || planeState !== "idle"}
         className="relative mt-6 inline-flex w-full items-center justify-center gap-2 overflow-hidden rounded-xl bg-[var(--primary)] px-6 py-3.5 text-sm font-semibold text-white shadow-lg shadow-[var(--primary)]/20 transition-all hover:bg-[var(--primary-dark)] hover:shadow-xl hover:shadow-[var(--primary)]/30 disabled:opacity-60 sm:text-base"
       >
         <AnimatePresence mode="wait">
@@ -243,21 +250,29 @@ export default function ContactForm() {
               className="inline-flex items-center gap-2"
             >
               Send Message
-              <motion.span
+
+              {/* clip-path arrow → airplane → fly off */}
+              <motion.div
+                className="relative inline-block h-5 w-5"
                 animate={
-                  flying
-                    ? { x: [0, 8, 200], y: [0, -4, -40], rotate: [0, -10, -25], opacity: [1, 1, 0], scale: [1, 1.2, 0.6] }
-                    : { x: 0, y: 0, rotate: 0, opacity: 1, scale: 1 }
+                  planeState === "flying"
+                    ? { x: 350, y: -20, rotate: -30 }
+                    : { x: 0, y: 0, rotate: 0 }
                 }
                 transition={
-                  flying
-                    ? { duration: 0.55, ease: [0.2, 0.8, 0.4, 1] }
-                    : { duration: 0.3 }
+                  planeState === "flying"
+                    ? { duration: 2, ease: "linear" }
+                    : { duration: 0 }
                 }
-                className="inline-block"
               >
-                <PaperAirplaneIcon className="h-4 w-4 sm:h-5 sm:w-5" />
-              </motion.span>
+                <motion.div
+                  className="h-full w-full bg-white"
+                  animate={{
+                    clipPath: planeState === "idle" ? arrowClip : planeClip,
+                  }}
+                  transition={{ duration: 1.2, ease: "easeInOut" }}
+                />
+              </motion.div>
             </motion.span>
           )}
         </AnimatePresence>
