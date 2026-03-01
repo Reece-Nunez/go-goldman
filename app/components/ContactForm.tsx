@@ -1,14 +1,26 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { useState, useRef, FormEvent } from "react";
+import { useState, useRef, FormEvent, ChangeEvent } from "react";
 import { PaperAirplaneIcon, CheckCircleIcon } from "@heroicons/react/24/outline";
 
 export default function ContactForm() {
   const [submitted, setSubmitted] = useState(false);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");
+  const [phone, setPhone] = useState("");
   const formLoadedAt = useRef(Date.now());
+
+  function formatPhone(value: string): string {
+    const digits = value.replace(/\D/g, "").slice(0, 10);
+    if (digits.length <= 3) return digits;
+    if (digits.length <= 6) return `(${digits.slice(0, 3)}) ${digits.slice(3)}`;
+    return `(${digits.slice(0, 3)}) ${digits.slice(3, 6)}-${digits.slice(6)}`;
+  }
+
+  function handlePhoneChange(e: ChangeEvent<HTMLInputElement>) {
+    setPhone(formatPhone(e.target.value));
+  }
 
   async function handleSubmit(e: FormEvent<HTMLFormElement>) {
     e.preventDefault();
@@ -55,6 +67,7 @@ export default function ContactForm() {
         <button
           onClick={() => {
             setSubmitted(false);
+            setPhone("");
             formLoadedAt.current = Date.now();
           }}
           className="mt-6 text-sm font-medium text-[#5BA8F5] transition-colors hover:text-white"
@@ -138,6 +151,11 @@ export default function ContactForm() {
             type="tel"
             autoComplete="tel"
             placeholder="(555) 123-4567"
+            value={phone}
+            onChange={handlePhoneChange}
+            maxLength={14}
+            pattern="\(\d{3}\) \d{3}-\d{4}"
+            title="Please enter a valid 10-digit phone number"
             className="mt-1.5 w-full rounded-lg border border-white/10 bg-white/5 px-4 py-2.5 text-sm text-white placeholder-gray-500 outline-none transition-colors focus:border-[#5BA8F5]/50 focus:ring-1 focus:ring-[#5BA8F5]/50 sm:text-base"
           />
         </div>
