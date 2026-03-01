@@ -14,17 +14,17 @@ const paymentServices = [
   {
     title: "Bank Account Verifications",
     description:
-      "Financing to maintain and grow your day-to-day operations.",
+      "Instant verification for secure, reliable transactions.",
     icon: DocumentCheckIcon,
   },
   {
     title: "ACH Processing",
-    description: "Fixed-term financing with predictable payments.",
+    description: "Streamlined ACH transfers for fast, cost-effective payments.",
     icon: BanknotesIcon,
   },
   {
     title: "E-commerce Payments",
-    description: "Loans to purchase or lease business equipment.",
+    description: "Full-stack payment solutions for online merchants.",
     icon: ComputerDesktopIcon,
   },
 ];
@@ -48,18 +48,19 @@ export default function Payments() {
   return (
     <section
       id="payments"
-      className="scroll-mt-20 bg-[var(--gray-50)] py-20 md:py-28"
+      className="scroll-mt-20 bg-[var(--gray-50)] py-16 sm:py-20 md:py-28"
+      aria-label="Payment processing services"
     >
-      <div className="mx-auto max-w-7xl px-6">
+      <div className="mx-auto max-w-7xl px-5 sm:px-6">
         <AnimatedSection className="text-center">
-          <p className="text-sm font-semibold uppercase tracking-widest text-[var(--primary)]">
+          <p className="text-xs font-semibold uppercase tracking-widest text-[var(--primary)] sm:text-sm">
             Payment Processing
           </p>
-          <h2 className="mt-2 text-3xl font-bold text-[var(--accent)] md:text-4xl">
+          <h2 className="mt-2 text-2xl font-bold text-[var(--accent)] sm:text-3xl md:text-4xl">
             Seamless Payment Solutions
           </h2>
         </AnimatedSection>
-        <div className="mt-16 grid gap-8 md:grid-cols-3">
+        <div className="mt-10 grid gap-5 sm:mt-14 sm:gap-6 md:mt-16 md:grid-cols-3 md:gap-8">
           {paymentServices.map((service, i) => (
             <ServiceCard
               key={service.title}
@@ -71,7 +72,7 @@ export default function Payments() {
             />
           ))}
         </div>
-        <div className="mt-8 grid gap-8 md:grid-cols-2">
+        <div className="mt-5 grid gap-5 sm:mt-6 sm:gap-6 md:mt-8 md:grid-cols-2 md:gap-8">
           {specialtyServices.map((service, i) => (
             <ServiceCard
               key={service.title}

@@ -5,11 +5,13 @@ import { useEffect, useRef, useState } from "react";
 
 interface CountingNumberProps {
   value: number;
+  prefix?: string;
   suffix: string;
   label: string;
+  description: string;
 }
 
-function CountingNumber({ value, suffix, label }: CountingNumberProps) {
+function CountingNumber({ value, prefix = "", suffix, label, description }: CountingNumberProps) {
   const ref = useRef<HTMLDivElement>(null);
   const [hasAnimated, setHasAnimated] = useState(false);
   const motionValue = useMotionValue(0);
@@ -38,35 +40,44 @@ function CountingNumber({ value, suffix, label }: CountingNumberProps) {
 
   return (
     <div ref={ref} className="text-center">
-      <div className="flex items-baseline justify-center gap-1">
-        <motion.span className="text-5xl font-bold text-[var(--primary)] md:text-6xl">
+      <div className="flex items-baseline justify-center gap-0.5">
+        {prefix && (
+          <span className="text-3xl font-bold text-[var(--primary)] sm:text-4xl md:text-5xl">
+            {prefix}
+          </span>
+        )}
+        <motion.span className="text-3xl font-bold text-[var(--primary)] sm:text-4xl md:text-5xl">
           {rounded}
         </motion.span>
-        <span className="text-2xl font-semibold text-[var(--primary)] md:text-3xl">
+        <span className="text-xl font-semibold text-[var(--primary)] sm:text-2xl md:text-3xl">
           {suffix}
         </span>
       </div>
-      <p className="mt-3 text-sm font-medium uppercase tracking-wider text-[var(--gray-500)]">
+      <p className="mt-2 text-sm font-semibold uppercase tracking-wider text-[var(--accent)] sm:text-base">
         {label}
+      </p>
+      <p className="mt-1 text-xs text-[var(--gray-500)] sm:text-sm">
+        {description}
       </p>
     </div>
   );
 }
 
 const stats = [
-  { label: "Businesses Served", value: 1000, suffix: "+" },
-  { label: "Total Funding Provided", value: 70, suffix: "M+" },
-  { label: "Customer Satisfaction", value: 95, suffix: "%" },
+  { label: "Businesses Served", value: 1000, prefix: "", suffix: "+", description: "Nationwide partnerships" },
+  { label: "Funding Provided", value: 70, prefix: "$", suffix: "M+", description: "In capital deployed" },
+  { label: "Client Satisfaction", value: 95, prefix: "", suffix: "%", description: "Happy customers" },
 ];
 
 export default function CountingStats() {
   return (
     <section
       id="about"
-      className="scroll-mt-20 border-b border-[var(--gray-200)] bg-white py-20"
+      aria-label="Company statistics"
+      className="scroll-mt-20 bg-white py-16 sm:py-20 md:py-24"
     >
-      <div className="mx-auto max-w-7xl px-6">
-        <div className="grid gap-12 md:grid-cols-3">
+      <div className="mx-auto max-w-7xl px-5 sm:px-6">
+        <div className="grid gap-8 sm:gap-10 md:grid-cols-3 md:gap-12">
           {stats.map((stat, i) => (
             <motion.div
               key={stat.label}
@@ -78,12 +89,18 @@ export default function CountingStats() {
                 delay: i * 0.15,
                 ease: "easeOut",
               }}
+              className="relative"
             >
               <CountingNumber
                 value={stat.value}
+                prefix={stat.prefix}
                 suffix={stat.suffix}
                 label={stat.label}
+                description={stat.description}
               />
+              {i < stats.length - 1 && (
+                <div className="mx-auto mt-8 h-px w-16 bg-[var(--gray-200)] md:hidden" />
+              )}
             </motion.div>
           ))}
         </div>

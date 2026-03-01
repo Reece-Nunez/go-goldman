@@ -5,10 +5,15 @@
   --foreground: #1E293B;
   --primary: #046BD2;
   --primary-dark: #0355A8;
+  --primary-light: #3B8EE6;
   --accent: #0F172A;
+  --accent-light: #1E293B;
+  --gold: #D4A853;
+  --gold-light: #E8C97A;
   --gray-50: #F8FAFC;
   --gray-100: #F1F5F9;
   --gray-200: #E2E8F0;
+  --gray-300: #CBD5E1;
   --gray-400: #94A3B8;
   --gray-500: #64748B;
   --gray-600: #475569;
@@ -60,4 +65,31 @@ h1, h2, h3 {
 }
 ::-webkit-scrollbar-thumb:hover {
   background: var(--gray-500);
+}
+
+/* Shimmer animation for decorative elements */
+@keyframes shimmer {
+  0% { background-position: -200% 0; }
+  100% { background-position: 200% 0; }
+}
+
+/* Pulse glow for CTAs */
+@keyframes pulse-glow {
+  0%, 100% { box-shadow: 0 0 20px rgba(4, 107, 210, 0.3); }
+  50% { box-shadow: 0 0 40px rgba(4, 107, 210, 0.5); }
+}
+
+/* Gradient text utility */
+.text-gradient-gold {
+  background: linear-gradient(135deg, var(--gold) 0%, var(--gold-light) 50%, var(--gold) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.text-gradient-blue {
+  background: linear-gradient(135deg, #5BA8F5 0%, #93C5FD 50%, #5BA8F5 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
 }
