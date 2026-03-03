@@ -88,21 +88,34 @@ export const metadata: Metadata = {
   alternates: {
     canonical: "https://gogoldman.com",
   },
+  other: {
+    "geo.region": "US-FL",
+    "geo.placename": "Miami",
+    "geo.position": "25.7617;-80.1918",
+    "ICBM": "25.7617, -80.1918",
+  },
 };
 
 const jsonLd = {
   "@context": "https://schema.org",
   "@type": "FinancialService",
+  "@id": "https://gogoldman.com/#organization",
   name: "Goldman Financial",
+  legalName: "Goldman Financial",
   url: "https://gogoldman.com",
-  logo: "https://gogoldman.com/goldman-black-logo.png",
+  logo: {
+    "@type": "ImageObject",
+    url: "https://gogoldman.com/goldman-black-logo.png",
+    width: 600,
+    height: 400,
+  },
   image: "https://gogoldman.com/goldman-black-logo.png",
   description:
     "Goldman Financial provides tailored business financing solutions including lines of credit, SBA loans, equipment financing, real estate loans, and payment processing services.",
-  areaServed: {
-    "@type": "Country",
-    name: "United States",
-  },
+  areaServed: [
+    { "@type": "Country", name: "United States" },
+    { "@type": "State", name: "Florida" },
+  ],
   address: {
     "@type": "PostalAddress",
     streetAddress: "777 Brickell Ave, Suite 500",
@@ -111,7 +124,19 @@ const jsonLd = {
     postalCode: "33131",
     addressCountry: "US",
   },
+  geo: {
+    "@type": "GeoCoordinates",
+    latitude: "25.7617",
+    longitude: "-80.1918",
+  },
   telephone: "+1-888-959-0331",
+  contactPoint: {
+    "@type": "ContactPoint",
+    telephone: "+1-888-959-0331",
+    contactType: "sales",
+    areaServed: "US",
+    availableLanguage: ["English", "Spanish"],
+  },
   serviceType: [
     "Business Line of Credit",
     "Working Capital Funding",
@@ -127,9 +152,20 @@ const jsonLd = {
     "Business Financing",
     "Payment Processing",
     "High-Risk Merchant Services",
+    "Small Business Loans",
+    "Commercial Lending",
   ],
   slogan: "Empowering Your Business with Tailored Financial Solutions",
   priceRange: "$$",
+  currenciesAccepted: "USD",
+  paymentAccepted: "ACH, eCheck, Wire Transfer",
+  openingHoursSpecification: {
+    "@type": "OpeningHoursSpecification",
+    dayOfWeek: ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"],
+    opens: "09:00",
+    closes: "18:00",
+  },
+  sameAs: [],
 };
 
 const faqJsonLd = {
