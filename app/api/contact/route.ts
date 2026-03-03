@@ -44,7 +44,7 @@ export async function POST(req: NextRequest) {
 
     await transporter.sendMail({
       from: `"Goldman Financial Website" <${process.env.GMAIL_USER}>`,
-      to: process.env.GMAIL_USER,
+      to: process.env.CONTACT_RECIPIENT || process.env.GMAIL_USER,
       replyTo: email,
       subject: `New Contact Form Submission from ${name}`,
       html: `
