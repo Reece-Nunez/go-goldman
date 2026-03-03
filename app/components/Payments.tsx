@@ -39,7 +39,7 @@ const specialtyServices = [
   {
     title: "e-Checks",
     description:
-      "Goldman is a full-service eCheck payment processing platform.",
+      "Goldman Financial is a full-service eCheck payment processing platform.",
     icon: CheckCircleIcon,
   },
 ];

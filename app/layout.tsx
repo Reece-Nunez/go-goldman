@@ -18,11 +18,11 @@ export const metadata: Metadata = {
   metadataBase: new URL("https://gogoldman.com"),
   title: {
     default:
-      "Goldman & Co – Business Loans, Payment Processing & Financial Solutions",
-    template: "%s | Goldman & Co",
+      "Goldman Financial – Business Loans, Payment Processing & Financial Solutions",
+    template: "%s | Goldman Financial",
   },
   description:
-    "Goldman & Co provides business lines of credit, working capital funding, SBA loans, equipment financing, real estate loans, and ACH/eCheck payment processing for businesses of all types including high-risk merchants.",
+    "Goldman Financial provides business lines of credit, working capital funding, SBA loans, equipment financing, real estate loans, and ACH/eCheck payment processing for businesses of all types including high-risk merchants.",
   keywords: [
     "business loans",
     "business line of credit",
@@ -37,13 +37,12 @@ export const metadata: Metadata = {
     "ecommerce payment processing",
     "business term loans",
     "Goldman Financial",
-    "Goldman & Co",
     "business financing Miami",
     "small business loans Florida",
   ],
-  authors: [{ name: "Goldman & Co" }],
-  creator: "Goldman & Co",
-  publisher: "Goldman & Co",
+  authors: [{ name: "Goldman Financial" }],
+  creator: "Goldman Financial",
+  publisher: "Goldman Financial",
   icons: {
     icon: [
       { url: "/favicon-16x16.png", sizes: "16x16", type: "image/png" },
@@ -52,28 +51,28 @@ export const metadata: Metadata = {
     apple: [{ url: "/apple-touch-icon.png", sizes: "180x180" }],
   },
   openGraph: {
-    title: "Goldman & Co – Business Loans & Payment Processing Solutions",
+    title: "Goldman Financial – Business Loans & Payment Processing Solutions",
     description:
       "Tailored financial solutions for your business. Lines of credit, SBA loans, equipment financing, real estate loans, and full-service ACH/eCheck payment processing.",
     url: "https://gogoldman.com",
-    siteName: "Goldman & Co",
+    siteName: "Goldman Financial",
     type: "website",
     locale: "en_US",
     images: [
       {
-        url: "/Final Files-01.jpg",
+        url: "/goldman-black-logo.png",
         width: 4167,
         height: 1085,
-        alt: "Goldman & Co - Business Financial Solutions",
+        alt: "Goldman Financial - Business Financial Solutions",
       },
     ],
   },
   twitter: {
     card: "summary_large_image",
-    title: "Goldman & Co – Tailored Financial Solutions",
+    title: "Goldman Financial – Tailored Financial Solutions",
     description:
       "Business financing and payment processing solutions. Fast funding, flexible terms, and high-risk merchant support.",
-    images: ["/Final Files-01.jpg"],
+    images: ["/goldman-black-logo.png"],
   },
   robots: {
     index: true,
@@ -94,12 +93,12 @@ export const metadata: Metadata = {
 const jsonLd = {
   "@context": "https://schema.org",
   "@type": "FinancialService",
-  name: "Goldman & Co",
+  name: "Goldman Financial",
   url: "https://gogoldman.com",
-  logo: "https://gogoldman.com/Final Files-01.png",
-  image: "https://gogoldman.com/Final Files-01.jpg",
+  logo: "https://gogoldman.com/goldman-black-logo.png",
+  image: "https://gogoldman.com/goldman-black-logo.png",
   description:
-    "Goldman & Co provides tailored business financing solutions including lines of credit, SBA loans, equipment financing, real estate loans, and payment processing services.",
+    "Goldman Financial provides tailored business financing solutions including lines of credit, SBA loans, equipment financing, real estate loans, and payment processing services.",
   areaServed: {
     "@type": "Country",
     name: "United States",
@@ -139,26 +138,26 @@ const faqJsonLd = {
   mainEntity: [
     {
       "@type": "Question",
-      name: "What types of business loans does Goldman & Co offer?",
+      name: "What types of business loans does Goldman Financial offer?",
       acceptedAnswer: {
         "@type": "Answer",
-        text: "Goldman & Co offers business loans, lines of credit, working capital financing, SBA loans, term loans, and equipment financing tailored to your business needs.",
+        text: "Goldman Financial offers business loans, lines of credit, working capital financing, SBA loans, term loans, and equipment financing tailored to your business needs.",
       },
     },
     {
       "@type": "Question",
-      name: "Does Goldman & Co provide payment processing services?",
+      name: "Does Goldman Financial provide payment processing services?",
       acceptedAnswer: {
         "@type": "Answer",
-        text: "Yes, Goldman & Co provides full-service payment processing including bank account verifications, ACH processing, e-commerce payments, and eCheck processing.",
+        text: "Yes, Goldman Financial provides full-service payment processing including bank account verifications, ACH processing, e-commerce payments, and eCheck processing.",
       },
     },
     {
       "@type": "Question",
-      name: "Where is Goldman & Co located?",
+      name: "Where is Goldman Financial located?",
       acceptedAnswer: {
         "@type": "Answer",
-        text: "Goldman & Co is located at 777 Brickell Ave, Suite 500, Miami, FL 33131. You can reach us at +888-959-0331.",
+        text: "Goldman Financial is located at 777 Brickell Ave, Suite 500, Miami, FL 33131. You can reach us at +888-959-0331.",
       },
     },
   ],

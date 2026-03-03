@@ -32,11 +32,11 @@ export default function Home() {
           <div className="flex flex-col items-center justify-between gap-6 md:flex-row">
             <div className="flex flex-col items-center md:items-start">
               <Image
-                src="/Final Files-01.png"
-                alt="Goldman & Co"
+                src="/goldman-black-logo.png"
+                alt="Goldman Financial"
                 width={140}
-                height={36}
-                className="h-8 w-auto sm:h-9"
+                height={140}
+                className="h-11 w-auto sm:h-14"
               />
               <p className="mt-2 text-sm text-[var(--gray-500)]">
                 Empowering Your Business with Tailored Financial Solutions
@@ -62,7 +62,7 @@ export default function Home() {
             </div>
           </div>
           <div className="mt-8 border-t border-[var(--gray-200)] pt-8 text-center text-sm text-[var(--gray-400)]">
-            &copy; {new Date().getFullYear()} Goldman &amp; Co. All rights
+            &copy; {new Date().getFullYear()} Goldman Financial. All rights
             reserved.
           </div>
         </div>

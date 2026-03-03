@@ -57,10 +57,33 @@ export default function ContactForm() {
     await new Promise((r) => setTimeout(r, 2200));
     setPlaneState("idle");
     setLoading(true);
-    // Simulate submission — replace with actual API endpoint
-    await new Promise((r) => setTimeout(r, 1000));
-    setLoading(false);
-    setSubmitted(true);
+
+    try {
+      const res = await fetch("/api/contact", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          name: formData.get("name"),
+          email: formData.get("email"),
+          phone: formData.get("phone"),
+          company: formData.get("company"),
+          service: formData.get("service"),
+          message: formData.get("message"),
+          website: formData.get("website"),
+        }),
+      });
+
+      if (!res.ok) {
+        const data = await res.json();
+        throw new Error(data.error || "Something went wrong.");
+      }
+
+      setSubmitted(true);
+    } catch (err) {
+      setError(err instanceof Error ? err.message : "Failed to send message. Please try again.");
+    } finally {
+      setLoading(false);
+    }
   }
 
   if (submitted) {

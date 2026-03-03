@@ -7,7 +7,7 @@ import Image from "next/image";
 export default function Hero() {
   return (
     <section
-      aria-label="Goldman & Co hero"
+      aria-label="Goldman Financial hero"
       className="relative overflow-hidden bg-[var(--accent)]"
     >
       {/* Main hero content area */}
@@ -93,7 +93,7 @@ export default function Hero() {
               transition={{ duration: 0.7, delay: 0.55 }}
               className="mt-5 max-w-2xl text-base leading-relaxed text-gray-400 sm:mt-6 sm:text-lg md:text-xl md:leading-relaxed"
             >
-              Goldman & Co delivers exceptional financial services that
+              Goldman Financial delivers exceptional financial services that
               empower businesses to achieve their goals. Our seasoned
               professionals provide innovative, personalized solutions for
               every client.
@@ -132,10 +132,10 @@ export default function Hero() {
             className="pointer-events-none absolute -right-4 top-1/2 hidden -translate-y-1/2 lg:block xl:-right-8"
           >
             <Image
-              src="/Final Files-01.png"
+              src="/goldman-black-logo.png"
               alt=""
               width={320}
-              height={83}
+              height={320}
               className="h-auto w-48 opacity-[0.08] brightness-0 invert xl:w-64"
               aria-hidden="true"
             />

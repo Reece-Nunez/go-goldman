@@ -36,30 +36,30 @@ export default function Navbar() {
         <div className="mx-auto flex max-w-7xl items-center justify-between px-5 py-3 sm:px-6 sm:py-4">
           <motion.a
             href="#"
-            aria-label="Goldman & Co - Home"
+            aria-label="Goldman Financial - Home"
             whileHover={{ scale: 1.02 }}
             transition={{ type: "spring", stiffness: 400, damping: 20 }}
             className="relative"
           >
-            {/* White logo for dark (unscrolled) state - uses invert filter on black logo */}
+            {/* White logo for dark (unscrolled) state — black logo with invert */}
             <Image
-              src="/Final Files-01.png"
-              alt="Goldman & Co"
+              src="/goldman-black-logo.png"
+              alt="Goldman Financial"
               width={160}
-              height={42}
+              height={160}
               priority
-              className={`h-8 w-auto transition-opacity duration-300 brightness-0 invert sm:h-10 ${
+              className={`h-11 w-auto transition-opacity duration-300 brightness-0 invert sm:h-14 ${
                 scrolled ? "opacity-0" : "opacity-100"
               }`}
             />
             {/* Black logo for light (scrolled) state */}
             <Image
-              src="/Final Files-01.png"
-              alt="Goldman & Co"
+              src="/goldman-black-logo.png"
+              alt="Goldman Financial"
               width={160}
-              height={42}
+              height={160}
               priority
-              className={`absolute top-0 left-0 h-8 w-auto transition-opacity duration-300 sm:h-10 ${
+              className={`absolute top-0 left-0 h-11 w-auto transition-opacity duration-300 sm:h-14 ${
                 scrolled ? "opacity-100" : "opacity-0"
               }`}
             />
