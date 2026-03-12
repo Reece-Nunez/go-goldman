@@ -83,8 +83,18 @@ export default function Navbar() {
               </motion.a>
             ))}
             <a
+              href="#contact"
+              className={`hidden rounded-lg px-4 py-2 text-sm font-semibold transition-all md:inline-block ${
+                scrolled
+                  ? "bg-[var(--primary)] text-white hover:bg-[var(--primary-dark)]"
+                  : "border border-white/20 text-white hover:bg-white/10"
+              }`}
+            >
+              Get Started
+            </a>
+            <a
               href="tel:+18889590331"
-              className={`rounded-lg px-4 py-2 text-sm font-semibold transition-all ${
+              className={`rounded-lg px-4 py-2 text-sm font-semibold transition-all md:hidden ${
                 scrolled
                   ? "bg-[var(--primary)] text-white hover:bg-[var(--primary-dark)]"
                   : "border border-white/20 text-white hover:bg-white/10"
